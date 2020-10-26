@@ -35,6 +35,7 @@ main{
     height: auto;
     margin: 13px;
     border: 1px solid darkgrey;
+    box-sizing: border-box;
 }
 @media only screen and (max-width:991px) and (min-width:768px){
     .card-container{
@@ -48,7 +49,6 @@ main{
 }
 
 .cartItemsContainer{
-    height: 100px;
     margin-bottom: 13px;
 }
 
@@ -61,7 +61,7 @@ main{
 img{
     width:100%;
     height:100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 .image-container{
     height: 180px;
@@ -85,4 +85,62 @@ img{
     border-top: 1px solid #f1f1f1;
     border-bottom: 1px solid #f1f1f1;
     padding:5px 0px;
+}
+
+.item-Card{
+    display: flex;
+    margin: 10px 0px;
+    align-items: center;
+}
+.item-Container{
+    display: flex;
+    align-items: center;
+    width: calc(50% - 10px);
+    border: 1px solid #f1f1f1;
+    padding: 0px 5px;
+
+}
+
+.IncDecContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+.quantity{
+    border: 1px solid #f1f1f1;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+.img-Container{
+    width:25px;
+    height:25px;
+    flex-shrink: 0;
+}
+.item-name{
+    margin:0px 5px;
+}
+
+.no-items{
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.controlPlusbtn{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.controlMinusbtn{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.controlMinusbtn:focus{
+    outline:none;
+}
+.controlPlusbtn:focus{
+    outline:none;
 }

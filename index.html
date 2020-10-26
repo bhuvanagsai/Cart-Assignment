@@ -6,14 +6,13 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" type="text/css" href="./css/style.css">
             <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="./scripts/cart.js"></script>
         </head>
         <body>
             <div class = "wrapper">
                 <div class = "container">
                     <h2>All Items</h2>
                     <main>
-                        <Section class = "itemsContainer" >
+                        <Section id = "test" class = "itemsContainer" >
                         </Section>
                         <Section class = "classCalcContainer">
                             <div class = "cartItemsContainer">
@@ -22,7 +21,9 @@
                                     <div>Qty</div>
                                     <div>Price</div>
                                 </div>
-                                <div></div>
+                                <div class = "cartList">
+                                    <div class = "no-items">No Items added</div>
+                                </div>
                             </div>
                             <div class = "AmountCalcContainer"></div>
                         </Section>
@@ -31,4 +32,5 @@
             </div>
 
         </body>
+        <script src="./scripts/cart.js"></script>
     </html>
