@@ -28,7 +28,7 @@ window.onload = function () {
     });
   }
 };
-
+let displayData = [];
 function buttonHandler(btnElement, e, count) {
   document.getElementsByClassName('AmountCalcContainer')[0].style.display = "block";
   btnElement.innerHTML = "Added";
@@ -42,26 +42,37 @@ function buttonHandler(btnElement, e, count) {
                                   <span class = "item-name">${e.name}</span>
                                   </div>
                                   <div class = "IncDecContainer">
-                                    <button class = "controlPlusbtn" onclick="addFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.display}')">+</button>
+                                    <button class = "controlPlusbtn" onclick="addFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.actual}','${e.price.display}')">+</button>
                                     <div class = "quantity">1</div>
-                                    <button class = "controlMinusbtn" onclick="minusFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.display}','${e.id}')">-</button>
+                                    <button class = "controlMinusbtn" onclick="minusFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.actual}','${e.price.display}','${e.id}')">-</button>
                                   </div>
                                   <div class = "price">${e.price.actual}</div>
                                 </div>`;
                                 let itemCount = document.getElementsByClassName('item-Card').length;
                                 document.getElementsByClassName('items')[0].innerHTML = "Items"+"("+itemCount+")";
-                                amountCalculator(document.getElementsByClassName('price'))
-}
-function addFunction(quantity, index, price,displayPrice) {
+};
+function addFunction(quantity, index, price,actualPrice,displayPrice) {
+  let obj  = {};
+  let added = 0;
   let add = parseInt(quantity[index].innerHTML) + 1;
   quantity[index].innerHTML = add;
-  price[index].innerHTML = parseInt(price[index].innerHTML) * add;
+  price[index].innerHTML = parseInt(actualPrice) * add;
+  added = added + parseInt(displayPrice) * add;
+  obj[`${index}`] = added;
+  if(!displayData.hasOwnProperty(index)){
+    displayData.push(obj);
+  }
+  else{
+    displayData[index][index] = added;
+  }
+  totalAmount(displayData);
   amountCalculator(price);
 }
 
-function minusFunction(quantity, index, price,displayPrice, id) {
+function minusFunction(quantity, index, price,actualPrice,displayPrice, id) {
+  let removed = 0;
   price[index].innerHTML =
-    parseInt(price[index].innerHTML) / parseInt(quantity[index].innerHTML);
+    parseInt(price[index].innerHTML) - parseInt(actualPrice);
   let minus = parseInt(quantity[index].innerHTML) - 1;
   quantity[index].innerHTML = minus;
   if (minus == 0) {
@@ -79,14 +90,24 @@ function minusFunction(quantity, index, price,displayPrice, id) {
     }
     count--;
   }
+  displayData[index][index] =  displayData[index][index] - displayPrice;
+  totalAmount(displayData)
   amountCalculator(price);
 }
 
 let priceAmount = 0;
+let dispPrice = 0;
 function amountCalculator(price){
   priceAmount = 0;
   for(j=0;j<price.length;j++){
     priceAmount = priceAmount + parseInt(price[j].innerHTML);
   }
   document.getElementsByClassName('orderTotal')[0].innerHTML = '$'+priceAmount; 
+}
+function totalAmount(data){
+  let total = 0;
+  for(let k=0;k<data.length;k++){
+    total = total +data[k][k];
+  }
+  document.getElementsByClassName('displayedPrice')[0].innerHTML = '$'+total;
 }
