@@ -40,23 +40,26 @@ function buttonHandler(btnElement, e, count) {
                                     <img src ="./images/${e.image}">
                                   </div>
                                   <span class = "item-name">${e.name}</span>
-                                  <span>1</span>
                                   </div>
                                   <div class = "IncDecContainer">
-                                    <button class = "controlPlusbtn" onclick="addFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'))">+</button>
+                                    <button class = "controlPlusbtn" onclick="addFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.display}')">+</button>
                                     <div class = "quantity">1</div>
-                                    <button class = "controlMinusbtn" onclick="minusFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.id}')">-</button>
+                                    <button class = "controlMinusbtn" onclick="minusFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.price.display}','${e.id}')">-</button>
                                   </div>
                                   <div class = "price">${e.price.actual}</div>
                                 </div>`;
+                                let itemCount = document.getElementsByClassName('item-Card').length;
+                                document.getElementsByClassName('items')[0].innerHTML = "Items"+"("+itemCount+")";
+                                amountCalculator(document.getElementsByClassName('price'))
 }
-function addFunction(quantity, index, price) {
+function addFunction(quantity, index, price,displayPrice) {
   let add = parseInt(quantity[index].innerHTML) + 1;
   quantity[index].innerHTML = add;
   price[index].innerHTML = parseInt(price[index].innerHTML) * add;
+  amountCalculator(price);
 }
 
-function minusFunction(quantity, index, price, id) {
+function minusFunction(quantity, index, price,displayPrice, id) {
   price[index].innerHTML =
     parseInt(price[index].innerHTML) / parseInt(quantity[index].innerHTML);
   let minus = parseInt(quantity[index].innerHTML) - 1;
@@ -76,4 +79,14 @@ function minusFunction(quantity, index, price, id) {
     }
     count--;
   }
+  amountCalculator(price);
+}
+
+let priceAmount = 0;
+function amountCalculator(price){
+  priceAmount = 0;
+  for(j=0;j<price.length;j++){
+    priceAmount = priceAmount + parseInt(price[j].innerHTML);
+  }
+  document.getElementsByClassName('orderTotal')[0].innerHTML = '$'+priceAmount; 
 }

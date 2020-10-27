@@ -6,8 +6,8 @@
    "image":  
    "recipeThumb-08.jpg", 
     "price": { 
-    "actual": 13999, 
-   "display": 22500 
+    "actual": 1, 
+   "display": 2 
     }, 
     "discount": 37 
     }, 
@@ -16,8 +16,8 @@
     "id" : 1,
    "image":  "recipeThumb-08.jpg", 
     "price": { 
-    "actual": 35999,
-    "display": 66900 
+    "actual": 1,
+    "display": 2 
     }, 
     "discount": 46 
     }, 
@@ -26,8 +26,8 @@
     "id" : 2,
     "image":  "recipeThumb-08.jpg", 
     "price": { 
-    "actual": 84999, 
-   "display": 133900 
+    "actual": 1, 
+   "display": 2 
     }, 
     "discount": 36 
     }, 
@@ -36,8 +36,8 @@
     "id" : 3,
    "image":  "recipeThumb-08.jpg", 
     "price": { 
-    "actual": 9999, 
-   "display": 16999 
+    "actual": 1, 
+   "display": 2 
     }, 
     "discount": 41 
     }, 
