@@ -16,24 +16,24 @@ xmlhttp.onreadystatechange = function () {
 xmlhttp.open("GET", "./JsonData/cartData.json", true);
 xmlhttp.send();
 let count = 0;
-window.onload = function()
-{ 
-  let ele = document.getElementsByTagName('button');
-  for( let i =0 ;i<ele.length ; i++){
-    ele[i].addEventListener('click',() =>{  
-      ele[i].setAttribute('data-add' , `added${count}`)
-      buttonHandler(ele[i],cartData.items[i],count++);
-      if(document.getElementsByClassName('no-items').length){
-        document.getElementsByClassName('no-items')[0].remove();
+window.onload = function () {
+  let ele = document.getElementsByTagName("button");
+  for (let i = 0; i < ele.length; i++) {
+    ele[i].addEventListener("click", () => {
+      ele[i].setAttribute("data-add", `added${count}`);
+      buttonHandler(ele[i], cartData.items[i], count++);
+      if (document.getElementsByClassName("no-items").length) {
+        document.getElementsByClassName("no-items")[0].remove();
       }
-    })
+    });
   }
-}
+};
 
-function buttonHandler(btnElement,e,count){
+function buttonHandler(btnElement, e, count) {
+  document.getElementsByClassName('AmountCalcContainer')[0].style.display = "block";
   btnElement.innerHTML = "Added";
   btnElement.disabled = true;
-  cartListEle = document.getElementsByClassName('cartList');
+  cartListEle = document.getElementsByClassName("cartList");
   cartListEle[0].innerHTML += `<div class = "item-Card">
                                 <div class = "item-Container">
                                   <div class = "img-Container">
@@ -48,29 +48,32 @@ function buttonHandler(btnElement,e,count){
                                     <button class = "controlMinusbtn" onclick="minusFunction(document.getElementsByClassName('quantity'),'${count}',document.getElementsByClassName('price'),'${e.id}')">-</button>
                                   </div>
                                   <div class = "price">${e.price.actual}</div>
-                                </div>`;                          
+                                </div>`;
 }
-function  addFunction(quantity,index,price){
-      let add = parseInt(quantity[index].innerHTML) + 1;
-      quantity[index].innerHTML = add;
-      price[index].innerHTML = parseInt(price[index].innerHTML) * add;
+function addFunction(quantity, index, price) {
+  let add = parseInt(quantity[index].innerHTML) + 1;
+  quantity[index].innerHTML = add;
+  price[index].innerHTML = parseInt(price[index].innerHTML) * add;
 }
 
-function  minusFunction(quantity,index,price,id){
-  console.log(id)
-  if(parseInt(quantity[index].innerHTML) != 0){
-    price[index].innerHTML = parseInt(price[index].innerHTML) / parseInt(quantity[index].innerHTML);
-    let minus = parseInt(quantity[index].innerHTML) - 1;
-    quantity[index].innerHTML = minus;
-    if(minus == 0){
-      document.getElementsByClassName('cartList')[0].children.item(parseInt(index)).remove();
-      document.getElementsByClassName('addToCart')[id].disabled = false;
-      document.getElementsByClassName('addToCart')[id].innerHTML = "Add to cart";
-      if(document.getElementsByClassName('cartList')[0].children.length == 0){
-        document.getElementsByClassName('cartList')[0].innerHTML = `<div class = "no-items">No Items added</div>`
-      }
-      count--;
+function minusFunction(quantity, index, price, id) {
+  price[index].innerHTML =
+    parseInt(price[index].innerHTML) / parseInt(quantity[index].innerHTML);
+  let minus = parseInt(quantity[index].innerHTML) - 1;
+  quantity[index].innerHTML = minus;
+  if (minus == 0) {
+    document
+      .getElementsByClassName("cartList")[0]
+      .children.item(parseInt(index))
+      .remove();
+    document.getElementsByClassName("addToCart")[id].disabled = false;
+    document.getElementsByClassName("addToCart")[id].innerHTML = "Add to cart";
+    if (document.getElementsByClassName("cartList")[0].children.length == 0) {
+      document.getElementsByClassName(
+        "cartList"
+      )[0].innerHTML = `<div class = "no-items">No Items added</div>`;
+      document.getElementsByClassName('AmountCalcContainer')[0].style.display = "none";
     }
+    count--;
   }
-
 }

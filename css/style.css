@@ -54,8 +54,8 @@ main{
 
 .AmountCalcContainer{
     border: 1px solid #f1f1f1;
-    height: 100px;
     margin-top: 13px;
+    display: none;
 }
 
 img{
@@ -143,4 +143,26 @@ img{
 }
 .controlPlusbtn:focus{
     outline:none;
+}
+.amountContainer{
+    display: flex;
+    justify-content: space-between;
+    padding:5px 0px;
+}
+.amountContainer :first-child{
+    flex:2;
+}
+.amountContainer :nth-child(2){
+    flex:1;
+}
+.amountContainer :nth-child(3){
+    flex:1;
+}
+
+.orderDetails{
+    padding:10px;
+}
+.AmountCalcContainer .order{
+    background: #f1f1f1;
+    padding:10px;
 }
