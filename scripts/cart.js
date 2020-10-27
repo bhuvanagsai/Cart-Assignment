@@ -115,4 +115,5 @@ function totalAmount(data){
   }
   document.getElementsByClassName('displayedPrice')[0].innerHTML = '$'+total;
   document.getElementsByClassName('discountAmount')[0].innerHTML = '$'+ (total-priceAmount);
+  console.log((document.getElementsByClassName('discountAmount')[0].innerHTML.slice(1)))
 }

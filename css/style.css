@@ -23,7 +23,6 @@ main{
     display:flex;
     flex-wrap: wrap;
 }
-
 .classCalcContainer{
     width:25%;
     display: flex;
@@ -49,6 +48,19 @@ main{
     }   
 }
 
+/* moile view */
+@media only screen and (max-width: 768px){
+    .itemsContainer{
+        width: 100%;
+    }
+    main{
+        display: block;
+    }
+    .classCalcContainer{
+        width:100%;
+    }
+
+}
 .cartItemsContainer{
     margin-bottom: 13px;
 }
@@ -178,6 +190,16 @@ header{
     color: #fff;
     padding: 10px;
     display: none;
+    text-align: center;
+}
+@media only screen and (max-width: 768px){
+    .message{
+        padding: 4px 0px;
+        top: 12px;
+        left: 49%;
+        font-size: 12px;
+        width: 50%;
+    }
 }
 .addToCart{
     border: 1px solid #2DB2EA;
