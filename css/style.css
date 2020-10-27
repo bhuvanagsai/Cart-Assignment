@@ -36,6 +36,7 @@ main{
     margin: 13px;
     border: 1px solid darkgrey;
     box-sizing: border-box;
+    position: relative;
 }
 @media only screen and (max-width:991px) and (min-width:768px){
     .card-container{
@@ -64,9 +65,9 @@ img{
     object-fit: cover;
 }
 .image-container{
-    height: 180px;
+    height: 150px;
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 10px 32px;
 }
 .productDetailsContainer{
     margin-top:10px;
@@ -165,4 +166,35 @@ img{
 .AmountCalcContainer .order{
     background: #f1f1f1;
     padding:10px;
+}
+header{
+    position: relative;
+}
+.message{
+    position: absolute;
+    top: 6px;
+    left: 38%;
+    background: #6AD05E;
+    color: #fff;
+    padding: 10px;
+    display: none;
+}
+.addToCart{
+    border: 1px solid #2DB2EA;
+    color: #2DB2EA;
+    border-radius: 5px; 
+    outline:none;
+}
+.addToCart:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.discount{
+    position: absolute;
+    top: 18%;
+    padding: 6px 2px;
+    background: #6AD05E;
+    color: #fff;
 }
