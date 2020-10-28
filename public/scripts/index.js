@@ -112,7 +112,7 @@ function removeQuantity(id, itemId) {
   qty.innerText = parseInt(qty.innerText) - 1;
   let price = parent.querySelector(".price");
   price.innerText =
-    parseInt(price.innerText) - parseInt(itemList[id].actualPrize);
+    parseInt(price.innerText) - parseInt(itemList[itemId].actualPrize);
 }
 
 // item Count calculator
