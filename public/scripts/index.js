@@ -111,6 +111,7 @@ function removeQuantity(id, itemId) {
   }
   qty.innerText = parseInt(qty.innerText) - 1;
   let price = parent.querySelector(".price");
+  console.log(itemId,itemList[itemId].actualPrize);
   price.innerText =
     parseInt(price.innerText) - parseInt(itemList[itemId].actualPrize);
 }
