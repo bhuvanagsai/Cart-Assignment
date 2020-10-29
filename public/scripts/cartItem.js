@@ -1,4 +1,4 @@
-class CartItem{
+export class CartItem{
     constructor(item,id) {
         this.id = id;
         this.itemId = item.id
@@ -25,6 +25,6 @@ class CartItem{
             <div class = "price">${this.actualPrize}</div>
             </div>
         `
-    }
+    }  
 
 }

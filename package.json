@@ -1,0 +1,33 @@
+{
+  "name": "cart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuvanagsai/Cart-Assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhuvanagsai/Cart-Assignment/issues"
+  },
+  "homepage": "https://github.com/bhuvanagsai/Cart-Assignment#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "babel-loader": "^8.1.0",
+    "path": "^0.12.7",
+    "webpack": "^5.3.1",
+    "webpack-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

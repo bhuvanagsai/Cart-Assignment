@@ -1,4 +1,4 @@
-class Card{
+export class Card{
     constructor(id, name, image, actual, display, discount) {
         this.id = id;
         this.actualPrize = actual;

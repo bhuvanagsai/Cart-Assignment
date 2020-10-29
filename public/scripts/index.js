@@ -1,3 +1,6 @@
+import {Card} from './card';
+import {CartItem} from './cartItem';
+
 let itemList = {};
 let cart = {};
 let total = 0;
@@ -19,6 +22,7 @@ function fetchdata() {
 function cartItems(data) {
   const parent = document.querySelector(".itemsContainer");
   data.items.map((element) => {
+    //discount calculation
     let discount;
     discount = Math.round(
       ((parseInt(element.price.display) - parseInt(element.price.actual)) /
@@ -62,6 +66,7 @@ function cartItems(data) {
       addingItemToCart(itemList[id]);
     });
   });
+
 }
 
 //adding items to the cart
@@ -76,7 +81,7 @@ function addingItemToCart(item) {
 }
 
 //add quantity (+)
-function addQuantity(ele, id) {
+window.addQuantity = function(ele, id) {
   let parent = ele.closest(".item-Card");
   let qty = parent.querySelector(".quantity");
   qty.innerText = parseInt(qty.innerText) + 1;
@@ -86,7 +91,7 @@ function addQuantity(ele, id) {
 }
 
 // remove the quantity (-)
-function removeQuantity(id, itemId) {
+window.removeQuantity = function(id, itemId) {
   let parent = document.querySelector('.item-Card[id="' + id + '"]');
   let qty = parent.querySelector(".quantity");
   amountCalculator(parseInt(cart[itemId].actualPrize),parseInt(cart[itemId].displayPrize), "sub");
