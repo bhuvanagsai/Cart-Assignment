@@ -26,4 +26,5 @@ class CartItem{
             </div>
         `
     }
+
 }

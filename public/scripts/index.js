@@ -70,8 +70,7 @@ function addingItemToCart(item) {
   const len = document.querySelectorAll(".item-Card").length;
   cart[item.id] = new CartItem(item, len);
   parent.insertAdjacentHTML("beforeend", cart[item.id].render());
-  amountCalculator(cart[item.id].actualPrize, "initial");
-  totalAmount(cart[item.id].displayPrize, "initial");
+  amountCalculator(cart[item.id].actualPrize,cart[item.id].displayPrize, "initial");
   //update the quantity in the Total amount Container
   itemCountHandler(document.querySelector(".items"));
 }
@@ -83,16 +82,14 @@ function addQuantity(ele, id) {
   qty.innerText = parseInt(qty.innerText) + 1;
   let price = parent.querySelector(".price");
   price.innerText = parseInt(itemList[id].actualPrize) * qty.innerText;
-  amountCalculator(parseInt(itemList[id].actualPrize), "add");
-  totalAmount(parseInt(itemList[id].displayPrize), "add");
+  amountCalculator(parseInt(itemList[id].actualPrize),parseInt(itemList[id].displayPrize), "add");
 }
 
 // remove the quantity (-)
 function removeQuantity(id, itemId) {
   let parent = document.querySelector('.item-Card[id="' + id + '"]');
   let qty = parent.querySelector(".quantity");
-  amountCalculator(parseInt(cart[itemId].actualPrize), "sub");
-  totalAmount(parseInt(cart[itemId].displayPrize), "sub");
+  amountCalculator(parseInt(cart[itemId].actualPrize),parseInt(cart[itemId].displayPrize), "sub");
   if (parseInt(qty.innerText) - 1 == 0) {
     parent.remove();
     itemCountHandler(document.querySelector(".items"));
@@ -111,7 +108,6 @@ function removeQuantity(id, itemId) {
   }
   qty.innerText = parseInt(qty.innerText) - 1;
   let price = parent.querySelector(".price");
-  console.log(itemId,itemList[itemId].actualPrize);
   price.innerText =
     parseInt(price.innerText) - parseInt(itemList[itemId].actualPrize);
 }
@@ -121,25 +117,18 @@ function itemCountHandler(count) {
   count.innerText =
     "Items(" + document.querySelectorAll(".item-Card").length + ")";
 }
-//Total with discount
-function amountCalculator(price, type) {
+// order total  , discount and actual amount
+function amountCalculator(actualPrize,displayPrize ,type) {
   if (type == "add" || type == "initial") {
-    priceAmount = priceAmount + price;
+    priceAmount = priceAmount + actualPrize;
+    total = total + displayPrize;
   } else if (type == "sub") {
-    priceAmount = priceAmount - price;
+    priceAmount = priceAmount - actualPrize;
+    total = total - displayPrize;
   }
   document.getElementsByClassName("orderTotal")[0].innerHTML =
     "$" + priceAmount;
-}
-
-//Total without discount
-function totalAmount(price, type) {
-  if (type == "add" || type == "initial") {
-    total = total + price;
-  } else if (type == "sub") {
-    total = total - price;
-  }
-  document.getElementsByClassName("displayedPrice")[0].innerHTML = "$" + total;
-  document.getElementsByClassName("discountAmount")[0].innerHTML =
-    "$" + (total - priceAmount);
+    document.getElementsByClassName("displayedPrice")[0].innerHTML = "$" + total;
+    document.getElementsByClassName("discountAmount")[0].innerHTML =
+      "$" + (total - priceAmount);
 }
