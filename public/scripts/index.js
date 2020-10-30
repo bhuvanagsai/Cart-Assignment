@@ -1,6 +1,7 @@
 import {Card} from './card';
 import {CartItem} from './cartItem';
 
+
 let itemList = {};
 let cart = {};
 let total = 0;
