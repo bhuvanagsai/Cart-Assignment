@@ -43,10 +43,10 @@ module.exports = merge(commonConfig, {
             },
           },
         }),
-        [new TerserPlugin({
+        new TerserPlugin({
             parallel: true,
             include: /\.min\.js$/
-        })
+        }),
       ],
     },
   });
